@@ -196,15 +196,36 @@ class ApplicationFunctions {
     }
   }
 
-  public function transactions()
+  public function transactions($number)
   {
+    $recipient = "";
+    $amount = "";
+    $transaction_date = "";
+    $transaction_status = "";
+    $status_message = "";
+
     $db = Database::getInstance();
-    try {
-      $
-    } catch (Exception $e) {
+    try
+    {
+      $stmt = $db->prepare("SELECT * FROM transactions WHERE sender = :number"); //not sure which one comes first
+      $stmt->bindParam(":number, $number"); //not sure which one comes first
+      $stmt->execute();
 
+      $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($res !== FALSE) {
+        //get info from database and assign here
+        $sender = $_GET['number'];
+        $recipient = $_GET['recipient'];
+        $transaction_date = $_GET['transaction_date'];
+        $transaction_status = $_GET['transaction_status'];
+        $status_message = $_GET['status_message'];
+      }
     }
-
+    catch (Exception $e)
+    {
+      return NULL;
+    }
   }
 }
 

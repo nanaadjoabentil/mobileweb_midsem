@@ -15,5 +15,9 @@ transactions();
 <body>
   <h3> Admin Dashboard </h3>
   <hr>
-     
+     Search: <input type="text" name = "search"> <br><br>
+
+     <hr>
+
+      
 </body>

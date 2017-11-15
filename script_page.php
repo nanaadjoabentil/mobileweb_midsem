@@ -127,7 +127,7 @@ else {
       }
       break;
 
-  case 3: #SESSION COUNT 3 SERVICE LEVEL 3
+  case 3: #SESSION COUNT =3 #SERVICE LEVEL 3
   //get amount from user and save it in a variable
 
   if ($data=='1')
@@ -176,7 +176,7 @@ else {
   }
   break;
 
-  case 4: #SESSION COUNT 4 = SERVICE LEVEL 4
+  case 4: #SESSION COUNT =4  #SERVICE LEVEL 4
   //CALL amount and number variables and concatenate them with the statement.
 
   if ($data=='1')
@@ -229,7 +229,7 @@ else {
   //get answer from user - yes or no
   //if yes, continue. if no, exit
 
-  case 5: #SESSION COUNT 5 SERVICE LEVEL 5
+  case 5: #SESSION COUNT =5 #SERVICE LEVEL 5
 
   //if yes:
   if ($data=='y')
