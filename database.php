@@ -8,7 +8,7 @@ class Database
   private static $dbb = NULL;
   private $conn = null;
 
-  private function__construct() {
+  private function __construct() {
     //$this->conn = new
     $this->conn = new PDO("mysql:host=localhost;port=3306;dbname=mobileweb","root","");
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
