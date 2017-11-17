@@ -129,7 +129,7 @@ class ApplicationFunctions {
       $db = Database::getInstance();
       try
       {
-        $stmt = $db->prepare("SELECT (COUNT(number)+ COUNT(transaction_type) + COUNT(col3)+ COUNT(col4)+ COUNT(col5)+ COUNT(col6)) AS counter FROM sessionmanager WHERE number = :number");
+        $stmt = $db->prepare("SELECT (COUNT(number)+ COUNT(transaction_type) + COUNT(col3)+ COUNT(col4)+ COUNT(col5)) AS counter FROM sessionmanager WHERE number = :number");
         $stmt->bindParam(":number",$number);
         $stmt->execute();
        $res = $stmt->fetch(PDO::FETCH_ASSOC);
