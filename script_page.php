@@ -48,7 +48,7 @@ else {
           if ($data=='1')
           {
                 $reply = "Send Money" . "\r\n" ."1. To MTN" . "\r\n" ."2. To Vodafone" . "\r\n" ."3. To Airtel". "\r\n" ."4. To Tigo". "\r\n" ."5. Exit";
-                // $type = "1";
+                $type = "1";
                 $ussd -> UpdateTransactionType($number, "transaction_type", "STATEMENT");
               }
           elseif ($data=='2')
@@ -72,26 +72,26 @@ else {
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd -> UpdateTransactionType($number, "col3", "STATEMENT");
-        // var_dump($ussd->UpdateTransactionType($number, "col3", "number"));
+        $ussd -> UpdateTransactionType($number, "recipientcol", "number");
+        // var_dump($ussd->UpdateTransactionType($number, "recipient", "number"));
       }
       else if( $data=='2')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "col3", "number");
+        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='3')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "col3", "number");
+        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='4')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "col3", "number");
+        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='5')
       {
@@ -105,7 +105,7 @@ else {
         $ussd->deleteSession($number);
       }
       break;
-echo $data;
+
   case 3: #SESSION COUNT 3 SERVICE LEVEL 3
   //get amount from user and save it in a variable
   $GLOBALS['amount']=$data;
@@ -114,25 +114,25 @@ echo $data;
   {
     $reply = "Enter amount";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col4", "amount");
+    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
   }
   else if( $data=='2')
   {
     $reply = "Enter amount";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col4", "amount");
+    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
   }
   else if( $data=='3')
   {
     $reply = "Enter amount";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col4", "amount");
+    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
   }
   else if( $data=='4')
   {
     $reply = "Enter amount";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col4", "amount");
+    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
   }
   else if( $data=='5')
   {
@@ -153,25 +153,25 @@ echo $data;
   {
     $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col5", "confirm");
+    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
   }
   else if( $data=='2')
   {
     $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col5", "confirm");
+    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
   }
   else if( $data=='3')
   {
     $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col5", "confirm");
+    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
   }
   else if( $data=='4')
   {
     $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "col5", "confirm");
+    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
   }
   else if( $data=='5')
   {
