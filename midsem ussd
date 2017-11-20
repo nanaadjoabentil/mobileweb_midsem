@@ -13,6 +13,14 @@ CREATE TABLE `sessionmanager` (
   `transaction_type` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`msisdn`) );
 
+CREATE TABLE `sessionmanager` (
+  `number` varchar(20) NOT NULL,
+  `transaction_type` varchar(1000) DEFAULT NULL,
+  `recipientcol` varchar(200) DEFAULT NULL,
+  `amountcol` varchar(200) DEFAULT NULL,
+  `confirmcol` varchar(200) DEFAULT NULL
+);
+
 
 cd/var/www/ashesi
 

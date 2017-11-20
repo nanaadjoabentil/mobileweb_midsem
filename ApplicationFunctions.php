@@ -129,7 +129,7 @@ class ApplicationFunctions {
       $db = Database::getInstance();
       try
       {
-        $stmt = $db->prepare("SELECT (COUNT(number)+ COUNT(transaction_type) + COUNT(recipientcol)+ COUNT(amountcol)+ COUNT(confirmcol)) AS counter FROM sessionmanager WHERE number = :number");
+        $stmt = $db->prepare("SELECT (COUNT(number)+ COUNT(transaction_type) +COUNT(network) + COUNT(recipientcol)+ COUNT(amountcol)+ COUNT(confirmcol)) AS counter FROM sessionmanager WHERE number = :number");
         $stmt->bindParam(":number",$number);
         $stmt->execute();
        $res = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -144,27 +144,27 @@ class ApplicationFunctions {
        return NULL;
      }
     }
-  /**
-  * Method for getting account balances
-  *@param number
-  *@return int
-  **/
-  public function getAccountBalances($number)
-  {
-    $db = Database::getInstance();
-    try {
-      $stmt = $db->prepare("SELECT accountbalance FROM useraccount WHERE number = :number");
-      $stmt->bindParam(":number, $number");
-      $stmt->execute();
-      $res = $stmt->fetch(PDO::FETCH_ASSOC);
-      if($res !== FALSE)
-      {
-        return $res;
-      }
-    } catch (Exception $e) {
-      return NULL;
-    }
-  }
+  // /**
+  // * Method for getting account balances
+  // *@param number
+  // *@return int
+  // **/
+  // public function getAccountBalances($number)
+  // {
+  //   $db = Database::getInstance();
+  //   try {
+  //     $stmt = $db->prepare("SELECT accountbalance FROM useraccount WHERE number = :number");
+  //     $stmt->bindParam(":number, $number");
+  //     $stmt->execute();
+  //     $res = $stmt->fetch(PDO::FETCH_ASSOC);
+  //     if($res !== FALSE)
+  //     {
+  //       return $res;
+  //     }
+  //   } catch (Exception $e) {
+  //     return NULL;
+  //   }
+  // }
   public function transactions()
   {
     $db = Database::getInstance();
@@ -172,5 +172,36 @@ class ApplicationFunctions {
       //
     } catch (Exception $e) {
     }
+  }
+
+  /**
+  * Method to send money through API
+  **/
+  public function sendMoney()
+  {
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      'CURLOPT_URL', "http://pay.npontu.com/api/pay",
+      'CURLOPT_RETURNTRANSFER', 1,
+      'CURLOPT_POST', 1,
+      'CURLOPT_POSTFIELDS', array(
+        "amt", "2",
+        "number","0547787834",
+        "uid","ashesi",
+        "pass","ashesi",
+        "tp","001",
+        "trans_type","debit",
+        "msg","test1",
+        "vendor","MTN",
+        "cbk","http://gmpay.npontu.com/api/tigo"
+      )
+    ));
+
+    $response = curl_exec($curl);
+    return $response;
+    var_dump($response);
+
+    curl_close($curl);
+
   }
 }

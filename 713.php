@@ -68,30 +68,34 @@ else {
     //get recipient's number and save in a variable
     // $GLOBALS['number'] = $data;
 
-      if( $data=='1')
+      if($data=='1')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd -> UpdateTransactionType($number, "recipientcol", "number");
+        $ussd -> UpdateTransactionType($number, "network", "MTN");
+        // $ussd -> UpdateTransactionType($number, "recipientcol", $data);
         // var_dump($ussd->UpdateTransactionType($number, "recipient", "number"));
       }
       else if( $data=='2')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
+        $ussd -> UpdateTransactionType($number, "network", "Vodafone");
+        // $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='3')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
+        $ussd -> UpdateTransactionType($number, "network", "Airtel");
+        // $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='4')
       {
         $reply = "Enter recipient's number";
         $type = '1';
-        $ussd ->UpdateTransactionType($number, "recipientcol", "number");
+        $ussd -> UpdateTransactionType($number, "network", "Tigo");
+        // $ussd ->UpdateTransactionType($number, "recipientcol", "number");
       }
       else if( $data=='5')
       {
@@ -105,41 +109,47 @@ else {
         $ussd->deleteSession($number);
       }
       break;
+      // echo $data;
 
   case 3: #SESSION COUNT 3 SERVICE LEVEL 3
   //get amount from user and save it in a variable
-  $GLOBALS['amount']=$data;
+  // $GLOBALS['amount']=$data;
 
-  if ($data=='1')
+  if (!empty($data))
   {
+    // var_dump($data);
     $reply = "Enter amount";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
+    $ussd -> UpdateTransactionType($number, "recipientcol", $data);
+    // $ussd ->UpdateTransactionType($number, "amountcol", $data);
   }
-  else if( $data=='2')
-  {
-    $reply = "Enter amount";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
-  }
-  else if( $data=='3')
-  {
-    $reply = "Enter amount";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
-  }
-  else if( $data=='4')
-  {
-    $reply = "Enter amount";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "amountcol", "amount");
-  }
-  else if( $data=='5')
-  {
-    $reply = "Thank you for using Insta-Money Transfer";
-    $type = '0';
-    $ussd ->deleteSession($number);
-  }
+  // else if( $data=='2')
+  // {
+  //   $reply = "Enter amount";
+  //   $type = '1';
+  //   $ussd -> UpdateTransactionType($number, "recipientcol", $data);
+  //   // $ussd ->UpdateTransactionType($number, "amountcol", $data);
+  // }
+  // else if( $data=='3')
+  // {
+  //   $reply = "Enter amount";
+  //   $type = '1';
+  //   $ussd -> UpdateTransactionType($number, "recipientcol", $data);
+  //   // $ussd ->UpdateTransactionType($number, "amountcol", $data);
+  // }
+  // else if( $data=='4')
+  // {
+  //   $reply = "Enter amount";
+  //   $type = '1';
+  //   $ussd -> UpdateTransactionType($number, "recipientcol", $data);
+  //   $ussd ->UpdateTransactionType($number, "amountcol", $data);
+  // }
+  // else if( $data=='5')
+  // {
+  //   $reply = "Thank you for using Insta-Money Transfer";
+  //   $type = '0';
+  //   $ussd ->deleteSession($number);
+  // }
   else {
     $reply="invalid option selected";
     $type='0';
@@ -149,36 +159,37 @@ else {
 
   case 4: #SESSION COUNT 4 = SERVICE LEVEL 4
   //CALL amount and number variables and concatenate them with the statement.
-  if ($data=='1')
+  if (!empty($data))
   {
-    $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
+    $reply = "Are you sure you wish to send to ?" . "\r\n" . "Enter 1 for yes and 2 for no";
     $type = '1';
-    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
+    $ussd ->UpdateTransactionType($number, "amountcol", $data);
+    // $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
   }
-  else if( $data=='2')
-  {
-    $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
-  }
-  else if( $data=='3')
-  {
-    $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
-  }
-  else if( $data=='4')
-  {
-    $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
-    $type = '1';
-    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
-  }
-  else if( $data=='5')
-  {
-    $reply = "Thank you for using Insta-Money Transfer";
-    $type = '0';
-    $ussd ->deleteSession($number);
-  }
+  // else if( $data=='2')
+  // {
+  //   $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
+  //   $type = '1';
+  //   $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
+  // }
+  // else if( $data=='3')
+  // {
+  //   $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
+  //   $type = '1';
+  //   $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
+  // }
+  // else if( $data=='4')
+  // {
+  //   $reply = "Are you sure you wish to send to ?" . "\r\n" . "y or n ?";
+  //   $type = '1';
+  //   $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
+  // }
+  // else if( $data=='5')
+  // {
+  //   $reply = "Thank you for using Insta-Money Transfer";
+  //   $type = '0';
+  //   $ussd ->deleteSession($number);
+  // }
   else {
     $reply="invalid option selected";
     $type='0';
@@ -186,23 +197,35 @@ else {
   }
   //break;
 
-//   //get answer from user - yes or no
-//   //if yes, continue. if no, exit
-//   case 5: #SESSION COUNT 5 SERVICE LEVEL 5
-//   //if yes:
-//   if ($data=='y')
-//   {
-//     $reply = " ";//send status message to both parties;
-//     $type = '0';
-//     $ussd->deleteSession($number);
-// }
-//   else if( $data=='n')
-//   {
-//     $reply = " ";//exit
-//     $type = '0';
-//     $ussd ->deleteSession($number);
-//   }
-    // break;
+  //get answer from user - yes or no
+  //if yes, continue. if no, exit
+  case 5: #SESSION COUNT 5 SERVICE LEVEL 5
+  //if yes:
+  if ($data=='1')
+  {
+    $reply = "sending";
+    $type = '1';
+    $ussd ->UpdateTransactionType($number, "confirmcol", "confirmed");
+    $ussd->sendMoney();
+    // echo $reply;
+    // var_dump($reply);
+    // $reply = "";//send status message to both parties;
+    // $type = '0';
+    // $ussd->deleteSession($number);
+}
+  else if( $data=='2')
+  {
+    $reply = "stopped";
+    $type = '1';
+    $ussd ->UpdateTransactionType($number, "confirmcol", "cancelled");
+    $ussd->sendMoney();
+    // echo $reply;
+    // var_dump($reply);
+    // // $reply = " ";//exit
+    // $type = '0';
+    // $ussd ->deleteSession($number);
+  }
+    break;
 }
 }
 
